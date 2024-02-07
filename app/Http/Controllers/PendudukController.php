@@ -30,12 +30,6 @@ class PendudukController extends Controller
             'umur.required' => 'Umur is required'
         ];
 
-        $messages = [
-            'nama_penduduk.required' => 'Nama Penduduk is required',
-            'jenis_kelamin.required' => 'Jenis Kelamin is required',
-            'umur.required' => 'Umur is required'
-        ];
-
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
