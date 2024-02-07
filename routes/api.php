@@ -7,7 +7,7 @@ use App\Http\Controllers\GambarController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\PendudukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +35,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::match(['put', 'post'], 'kategori-update/{id}', [KategoriController::class, 'update']);
     Route::delete('kategori-delete/{id}', [KategoriController::class,'destroy']);        
     
+    //penduduk
+    Route::post('penduduk',[PendudukController::class,'store']);
+    Route::get('penduduk/{id}',[PendudukController::class,'show']);
+    Route::match(['put', 'post'], 'penduduk-update/{id}', [PendudukController::class, 'update']);
+    Route::delete('penduduk-delete/{id}', [PendudukController::class,'destroy']);        
+    
     //gambar
     Route::post('gambar',[GambarController::class,'store']);
     Route::match(['put', 'post'], 'gambar-update/{id}', [GambarController::class, 'update']);
-    Route::delete('gambar-delete/{id}', [GambarController::class,'destroy']);    
+    Route::delete('gambar-delete/{id}', [GambarController::class,'destroy']);  
     
     //like
     Route::post('like',[LikeController::class,'store']);
@@ -49,6 +55,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::get('kategori',[KategoriController::class,'index']);
+
+Route::get('penduduk',[PendudukController::class,'index']);
 
 Route::get('gambar',[GambarController::class,'index']);
 Route::get('gambar/{id}',[GambarController::class,'show']);

@@ -20,10 +20,20 @@ class KategoriController extends Controller
     {
         $rules = [
             'nama_kategori' => 'required|string|max:258',
+            'jenis_kategori' => 'required|string|max:258',
+            'keterangan' => 'required|string|max:258',
+        ];
+        
+        $messages = [
+            'nama_kategori.required' => 'nama kategori is required',
+            'jenis_kategori.required' => 'Jenis kategori is required',
+            'keterangan.required' => 'keterangan is required',
         ];
 
         $messages = [
-            'nama_kategori.required' => 'Nama kategori is required',
+            'nama_kategori.required' => 'nama kategori is required',
+            'jenis_kategori.required' => 'jenis_kategori kategori is required',
+            'keterangan.required' => 'Keterangan kategori is required',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -36,6 +46,8 @@ class KategoriController extends Controller
 
             Kategori::create([
                 'nama_kategori' => $request->input('nama_kategori'),
+                'jenis_kategori' => $request->input('jenis_kategori'),
+                'keterangan' => $request->input('keterangan'),
             ]);
 
             return response()->json([
@@ -67,10 +79,14 @@ class KategoriController extends Controller
     {
         $rules = [
             'nama_kategori' => 'required|string|max:258',
+            'jenis_kategori' => 'required|string|max:258',
+            'keterangan' => 'required|string|max:258',
         ];
 
         $messages = [
             'nama_kategori.required' => 'Nama Kategori is required',
+            'jenis_kategori.required' => 'Jenis Kategori is required',
+            'keterangan.required' => 'Keterangan Kategori is required',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -90,6 +106,8 @@ class KategoriController extends Controller
 
             $updatedData = [
                 'nama_kategori' => $request->input('nama_kategori'),
+                'jenis_kategori' => $request->input('jenis_kategori'),
+                'keterangan' => $request->input('keterangan'),
             ];
 
 
