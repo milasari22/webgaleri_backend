@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PendudukController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::match(['put', 'post'], 'kategori-update/{id}', [KategoriController::class, 'update']);
     Route::delete('kategori-delete/{id}', [KategoriController::class,'destroy']);        
     
+    //menu
+    Route::post('menu',[MenuController::class,'store']);
+    Route::get('menu/{id}',[MenuController::class,'show']);
+    Route::match(['put', 'post'], 'menu-update/{id}', [MenuController::class, 'update']);
+    Route::delete('menu-delete/{id}', [MenuController::class,'destroy']);  
+
     //penduduk
     Route::post('penduduk',[PendudukController::class,'store']);
     Route::get('penduduk/{id}',[PendudukController::class,'show']);
@@ -55,6 +62,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::get('kategori',[KategoriController::class,'index']);
+
+Route::get('menu',[MenuController::class,'index']);
 
 Route::get('penduduk',[PendudukController::class,'index']);
 
